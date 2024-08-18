@@ -1,6 +1,6 @@
 # ETH-only LEB8s 
 ## Motivation
-Rocketpool is losing minipools.  This is believed to be because RPL is not attractive due to it's volatility and the need for 10% collateral in order to enter and receive rewards.  This original tokenomics required a minimum 10% of borrowed ETH in RPL in order to 
+Rocketpool is losing minipools.  This is believed to be because RPL is not attractive due to its volatility and the need for 10% collateral in order to enter and receive rewards.  This original tokenomics required a minimum 10% of borrowed ETH in RPL in order to 
 
 - spin up a new minipool 
 - receive RPL rewards from inflation and 
@@ -50,7 +50,7 @@ LEB8s already exist, so little if any Smart Contract work would be required. Rem
 - existing Node Operators with idle ETH to add minipools and 
 - Node Operators with EB16s to bond-reduce.
 
-ETH-only LEB8s should attract more staked ETH. However, unless the commission rate is lower than 14%, there would be an incentive for under-collateralised Node Operators to exist and re-enter resulting in a huge churn and no incentive for new Node Operators to stake RPL at all. To remedy this, the commission rate for new operators would be set lower and a bonus in ETH available in proportion to RPL held.  For implementation reasons, the base commission will be distributed directly from consensus rewards, while the ETH bonus will be distributed from the Smoothing Pool via the rewards tree calculation. A positive side effect of the reduced commission is that rETH holders may pay a slightly lower overall commission.
+ETH-only LEB8s should attract more staked ETH. However, unless the commission rate is lower than 14%, there would be an incentive for under-collateralised Node Operators to exits and re-enter resulting in a huge churn and no incentive for new Node Operators to stake RPL at all. To remedy this, the commission rate for new operators would be set lower and a bonus in ETH available in proportion to RPL held.  For implementation reasons, the base commission will be distributed directly from consensus rewards, while the ETH bonus will be distributed from the Smoothing Pool via the rewards tree calculation. A positive side effect of the reduced commission is that rETH holders may pay a slightly lower overall commission.
 
 While the commision distribution should help reduce the imbalance between Node operator supply and rETH demand, it does not solve the RPL value concern. The incentive to 'top-up' has hit a tipping point where few Node Operators are able or inclined to do so. Some Node Operators have chosen to switch to EB16s while others have exited minipools in order to receive RPL rewards. In extrme cases Node Operators have exited their nodes all-together
 
@@ -94,9 +94,9 @@ To avoid the risks associated with smart contract changes, the reward system sho
 
 All LEB8s created after this change, will inherit ETH-only LEB8 characteristics.
 
-If a Node Operator under-collaterlaised and has not opted into the smoothing pool, then when they create an LEB8 minipool, Smartnode will warn them that they not receive bonus ETH for holding RPL.
+If a Node Operator under-collateralised and has not opted into the smoothing pool, then when they create an LEB8 minipool, Smartnode will warn them that they will not receive bonus ETH for holding RPL.
 
-Documentation will to warn the user of the protential loss of income from a decision to opt out of the smoothing pool when creating an LEB8 minipool when under-collateralised. 
+Documentation will warn the user of the protential loss of income from a decision to opt out of the smoothing pool when creating an LEB8 minipool when under-collateralised. 
 
 ### Commission calculation
 
