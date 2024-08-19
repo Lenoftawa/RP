@@ -91,6 +91,7 @@ These parameters can be set to define the `commission rate` as well as the Smoot
    
       These parameter settings can be expressed diagramatically as:
    
-   ![image](https://github.com/user-attachments/assets/c97fd65f-4f96-4547-b6f2-4a3e706b3ecd)
+   ![image](https://github.com/user-attachments/assets/8c75ea5c-c3a6-420c-b177-565d4b81880b)
+
 
 _(not to scale)_
