@@ -7,7 +7,7 @@ This proposal introduces ETH-only LEB8 minipools, allowing Node Operators to cre
 
 ## Motivation
 
-Rocket Pool has been experiencing a decline in minipools, primarily due to RPL's volatility and the requirement for a 10% RPL collateral to receive rewards and create new minipools. Additionally, Lido's forthcoming CSM offers higher APR without needing to stake an additional token, potentially drawing Node Operators away from Rocket Pool. Given the extended timeline for Rocket Pool's Saturn 1 and 2 updates, there is a risk of losing Node Operators to Lido CSM during this interim period.
+Rocket Pool has been experiencing a decline in the number of minipools, Node Operators and staked RPL. This is believed to be due to RPL's decline in value relative to ETH and the requirement for RPL collateral, which is 10% of the current value of borrowed ETH. Without this collateral, Node Operators find that they no longer receive rewards and cannot create new minipools. Additionally, Lido's forthcoming CSM offers higher APR without needing to stake an additional token, potentially drawing Node Operators away from Rocket Pool. Given the extended timeline for Rocket Pool's Saturn 1 and 2 updates, there is a risk of losing Node Operators to Lido CSM during this interim period.
 
 To maintain competitiveness, it is crucial to consider some form of interim measure that loosens the RPL staking requirement.
 
@@ -24,10 +24,10 @@ The rewards for ETH-only LEB8s cannot be overly generous, as this will diminish 
 The delivery schedule for Saturn 1 is already challenging, in fact it is the primary motivation for this proposal. Delivering this interim measure cannot be allowed to intefere with Saturn development.
 
 ### RPL Value  
-The reward system should avoid encouraging the selling of RPL or unnecessary churn in minipool creation.
+The reward system should discourage the selling or unstaking RPL, and ideally increase RPL staking.
 
 ### Exit and Re-enter Churn  
-The proposal needs to minimize incentives for Node Operators to close existing minipools only to create new ETH-only LEB8s, as this would be distruptive and not be beneficial to the Rocketpool protocol.
+The proposal needs to minimize incentives for Node Operators to close existing minipools only to create new ETH-only LEB8s. Even if RPL remains staked, it is unnecessarily distruptive.
 
 ## Dynamic Commission Proposal
 
@@ -43,14 +43,14 @@ To further incentivize RPL staking, an ETH bonus would be paid based on the amou
 
 ### RPL Rewards
 
-RPL rewards are distributed on a node-wide basis, unlike commission, which is paid per minipool. The current RPL cliff, which incentivizes Node Operators to exit minipools rather than top up their RPL, should be reassessed. The goal is to balance the incentives for topping up RPL, minimizing exits due to RPL exhaustion, and encouraging new Node Operators to purchase RPL.
+RPL rewards are distributed on a node-wide basis, unlike commission, which is paid per minipool. The current RPL cliff, which incentivizes Node Operators to exit minipools rather than top up their RPL, should be reassessed. The goal is to balance the incentives for topping up RPL, minimizing exits due to RPL top-up exhaustion, and encouraging new Node Operators to purchase RPL.
 
 
 ## Implementation Constraints
 
 To avoid the risks associated with smart contract modifications, the reward system should be managed off-chain via the reward tree generation process. Dynamic commission distribution can be achieved by setting a lower on-chain commission rate for ETH-only LEB8s and providing an ETH top-up based on RPL collateral ratio through the Smoothing Pool.
 
-## Specification
+## Requirements
 The ETH reward distribution for ETH-only LEB8s can be described in terms of a number of parameters (A to E) as shown in the chart below. 
 ![image](https://github.com/user-attachments/assets/cb007835-4c50-4703-9f12-3103d0c0b9ea)
 
@@ -58,18 +58,18 @@ _(not to scale)_
 
 These parameters can be set to define the `commission rate` as well as the Smoothing Pool `distribution rule`. 
 
-1. ### LEB8 Minipool Creation
-   - All LEB8s created post-implementation will follow the ETH-only LEB8 structure.
+### LEB8 Minipool Creation
+   - All LEB8s created post-implementation will implement the ETH-only LEB8 beahviour.
    - If a Node Operator creates an LEB8 minipool and has not opted into the Smoothing Pool, Smartnode will issue a warning about the potential loss of bonus ETH.
    - Documentation will highlight the risks of opting out of the Smoothing Pool when creating LEB8 minipools.
 
-2. ### Commission Calculation
+### Commission Calculation
 
    - The commission rate for new LEB8s will be set to A%.
    - The commission rate for existing minipools will remain unchanged.
    - The commission calculation remains unchanged, but the rate assigned to each minipool at creation time will differ.
 
-3. ### Smoothing Pool Distribution
+### Smoothing Pool Distribution
    - The Smoothing Pool balance will be distributed during the reward tree calculation process.
    - The Smoothing Pool balance will be only be distributed to nodes that have opted into the Smoothing Pool.
    - The bonus will be available to Node Operators using the existing claim interface.
