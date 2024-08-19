@@ -7,9 +7,9 @@ This proposal introduces ETH-only LEB8 minipools, allowing Node Operators to cre
 
 ## Motivation
 
-Rocket Pool has been experiencing a decline in minipool creation, primarily due to RPL's volatility and the requirement for a 10% RPL collateral to receive rewards. This has become less attractive due to both RPL's fluctuating value and the appreciation of ETH. Additionally, Lido's forthcoming CSM offers higher APR without needing to stake an additional token, potentially drawing Node Operators away from Rocket Pool. Given the extended timeline for Rocket Pool's Saturn 1 and 2 updates, there is a risk of losing Node Operators to Lido CSM during this interim period.
+Rocket Pool has been experiencing a decline in minipools, primarily due to RPL's volatility and the requirement for a 10% RPL collateral to receive rewards and create new minipools. Additionally, Lido's forthcoming CSM offers higher APR without needing to stake an additional token, potentially drawing Node Operators away from Rocket Pool. Given the extended timeline for Rocket Pool's Saturn 1 and 2 updates, there is a risk of losing Node Operators to Lido CSM during this interim period.
 
-To maintain competitiveness, it is crucial to consider an interim measure that loosens the RPL staking requirement.
+To maintain competitiveness, it is crucial to consider some form of interim measure that loosens the RPL staking requirement.
 
 ## Considerations
 The solution must not interfere with the timeline for Saturn 1, must be simple to implement, must not undermine the value of staking RPL, and should avoid negatively impacting layer 2 RocketPool protocols like Nodeset and RocketLend.
