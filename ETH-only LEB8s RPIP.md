@@ -12,14 +12,14 @@ Rocket Pool has been experiencing a decline in minipool creation, primarily due 
 To maintain competitiveness, it is crucial to consider an interim measure that loosens the RPL staking requirement.
 
 ## Considerations
-The solution should not interfere with the timeline for Saturn 1, must be simple to implement, not undermine the value of staking RPL, and avoid negatively impacting layuer 2 RocketPool protocols like Nodeset and RocketLend.
+The solution must not interfere with the timeline for Saturn 1, must be simple to implement, must not undermine the value of staking RPL, and should avoid negatively impacting layer 2 RocketPool protocols like Nodeset and RocketLend.
 
 ### Nodeset and RocketLend  
 Layer 2 RocketPool protocols have been designed to function within the current tokenomics, so any changes should maintain demand for rETH and preserve the incentive for Node Operators to stake RPL.
 
 ### Saturn  
 
-Overly generous rewards for ETH-only LEB8s might diminish the appeal of transitioning to Saturn Megapools once they become available.
+The rewards for ETH-only LEB8s cannot be overly generous, as this will diminish the appeal of transitioning to Saturn Megapools once they become available.
 
 The delivery schedule for Saturn 1 is already challenging, in fact it is the primary motivation for this proposal. Delivering this interim measure cannot be allowed to intefere with Saturn development.
 
@@ -27,13 +27,13 @@ The delivery schedule for Saturn 1 is already challenging, in fact it is the pri
 The reward system should avoid encouraging the selling of RPL or unnecessary churn in minipool creation.
 
 ### Exit and Re-enter Churn  
-The proposal aims to minimize incentives for Node Operators to close existing minipools only to create new ETH-only LEB8s, which could lead to inefficiencies.
+The proposal needs to minimize incentives for Node Operators to close existing minipools only to create new ETH-only LEB8s, as this would be distruptive and not be beneficial to the Rocketpool protocol.
 
 ## Dynamic Commission Proposal
 
-A key feature of this proposal is the introduction of ETH-only LEB8s, where Node Operators can create minipools without the requirement for additional RPL. To address concerns about under-collateralized Node Operators and the incentive structure, the commission rate for new ETH-only LEB8s would be set lower than the current 14%, with an additional ETH bonus tied to the amount of RPL held. This bonus would be distributed from the Smoothing Pool via the rewards tree calculation.
+A key feature of this proposal is the introduction of ETH-only LEB8s, where Node Operators can create minipools without the requirement for additional RPL. The commission rate for new ETH-only LEB8s would be set lower than the current 14%, with an additional ETH bonus tied to the amount of RPL held. The total ETH reward (comission plus bonus) would be capped at 14% to avoid competing with existing LEB8s. This bonus would be distributed from the Smoothing Pool via the rewards tree calculation.
 
-While this approach should attract more staked ETH, it also considers the potential negative impact on RPL value. The proposal recommends revisiting the current 10% minimum RPL requirement for earning RPL rewards to provide relief to under-collateralized nodes and incentivize the purchase of RPL for ETH-only LEB8s. The exact parameters of this change are yet to be determined.
+While this approach should attract more staked ETH, it also considers the potential negative impact on RPL value. The proposal recommends revisiting the current 10% minimum RPL requirement for earning RPL rewards. This will provide relief to under-collateralized nodes and incentivize the purchase of RPL for ETH-only LEB8s. The exact parameters of this change are yet to be determined.
 
 ### ETH Commission
 
@@ -56,12 +56,12 @@ The ETH reward distribution for ETH-only LEB8s can be described in terms of a nu
 
 _(not to scale)_
 
-These parameters can be set to define the Commission rate as well as the Smoothing Pool distribution rule. 
+These parameters can be set to define the `commission rate` as well as the Smoothing Pool `distribution rule`. 
 
 1. ### LEB8 Minipool Creation
    - All LEB8s created post-implementation will follow the ETH-only LEB8 structure.
-   - If a Node Operator is under-collateralized and not part of the Smoothing Pool, Smartnode will issue a warning about the potential loss of bonus ETH.
-   - Documentation will highlight the risks of opting out of the Smoothing Pool when creating under-collateralized LEB8 minipools.
+   - If a Node Operator creates an LEB8 minipool and has not opted into the Smoothing Pool, Smartnode will issue a warning about the potential loss of bonus ETH.
+   - Documentation will highlight the risks of opting out of the Smoothing Pool when creating LEB8 minipools.
 
 2. ### Commission Calculation
 
@@ -73,27 +73,24 @@ These parameters can be set to define the Commission rate as well as the Smoothi
    - The Smoothing Pool balance will be distributed during the reward tree calculation process.
    - The Smoothing Pool balance will be only be distributed to nodes that have opted into the Smoothing Pool.
    - The bonus will be available to Node Operators using the existing claim interface.
-   - The Smoothing Pool ETH distribution will be based on the node's borrowed ETH/RPL ratio (`ratio`) by applying the following `distribution rules`:
+   - The proportion of ETH distributed to each minipool will be based on the node's borrowed ETH/RPL ratio (`ratio`) by applying the following `distribution rule`:
      - The minimum eligibility level will be B% RPL collateral `ratio`.
      - The maximum eligibility level will be C% RPL collateral `ratio`.
      - The minimum Smoothing Pool ETH bonus percentage will be D%-A%.
      - The maximum Smoothing Pool ETH bonus percentage will be E%-A%.
      - The Smoothing Pool ETH bonus percentage will scale linearly from D% to E%.
      - The Smoothing Pool bonus for a specific minipool will be calculated where the node's RPL collateral `ratio` intersects the line from D% to 14%.
-  - If the Smoothing pool balance is insufficient to distribute the full top-up according to the `distribution rules`, a `distribution adjustment` will be applied as follows:
+  - If the Smoothing pool balance is insufficient to distribute the full top-up according to the `distribution rule`, a `distribution adjustment` will be applied as follows:
      - Something simple.
-  - The parameter setting to be applied for Comission and Smoothing Pool Distribution rules will be:
+  - The parameter settings for 'commission rate' and Smoothing Pool `distribution rule` will be:
       - A = 7
       - B = 0
       - C = 10
       - D = 7
       - E = 14
    
-      This can be expressed diagramatically as:
+      These parameter settings can be expressed diagramatically as:
    
    ![image](https://github.com/user-attachments/assets/c97fd65f-4f96-4547-b6f2-4a3e706b3ecd)
 
 _(not to scale)_
-
-
-
