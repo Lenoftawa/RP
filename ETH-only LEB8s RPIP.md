@@ -52,7 +52,8 @@ To avoid the risks associated with smart contract modifications, the reward syst
 
 ## Requirements
 The ETH reward distribution for ETH-only LEB8s can be described in terms of a number of parameters (A to E) as shown in the chart below. 
-![image](https://github.com/user-attachments/assets/cb007835-4c50-4703-9f12-3103d0c0b9ea)
+![image](https://github.com/user-attachments/assets/70d2e583-7cdb-4b5b-a1ec-9c851aa2704f)
+
 
 _(not to scale)_
 
@@ -91,7 +92,8 @@ These parameters can be set to define the `commission rate` as well as the Smoot
    
       These parameter settings can be expressed diagramatically as:
    
-   ![image](https://github.com/user-attachments/assets/8c75ea5c-c3a6-420c-b177-565d4b81880b)
+   ![image](https://github.com/user-attachments/assets/a5fbb8af-b2ee-4875-9056-2d0f93323e35)
+
 
 
 _(not to scale)_
